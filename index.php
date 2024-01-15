@@ -1,21 +1,21 @@
 <?php
 
-// Интерфейс для классов, которые могут управлять или руководить
+// РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ РєР»Р°СЃСЃРѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ СѓРїСЂР°РІР»СЏС‚СЊ РёР»Рё СЂСѓРєРѕРІРѕРґРёС‚СЊ
 interface LeadInterface {
     public function leadTeam();
 }
 
-// Интерфейс для классов, которые могут заниматься разработкой приложения
+// РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ РєР»Р°СЃСЃРѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ Р·Р°РЅРёРјР°С‚СЊСЃСЏ СЂР°Р·СЂР°Р±РѕС‚РєРѕР№ РїСЂРёР»РѕР¶РµРЅРёСЏ
 interface ApplicationCreatorInterface {
     public function createApplication();
 }
 
-// Интерфейс для классов, которые могут вести вебинар для коллег
+// РРЅС‚РµСЂС„РµР№СЃ РґР»СЏ РєР»Р°СЃСЃРѕРІ, РєРѕС‚РѕСЂС‹Рµ РјРѕРіСѓС‚ РІРµСЃС‚Рё РІРµР±РёРЅР°СЂ РґР»СЏ РєРѕР»Р»РµРі
 interface WebinarSpeakerInterface {
     public function conductWebinar();
 }
 
-// Базовый класс Сотрудник
+// Р‘Р°Р·РѕРІС‹Р№ РєР»Р°СЃСЃ РЎРѕС‚СЂСѓРґРЅРёРє
 class Employee {
     protected $firstName;
     protected $lastName;
@@ -36,56 +36,51 @@ class Employee {
     }
 }
 
-// Класс Директор
+// РљР»Р°СЃСЃ Р”РёСЂРµРєС‚РѕСЂ
 class Director extends Employee implements LeadInterface, WebinarSpeakerInterface {
     public function leadTeam() {
-        // Логика руководства
         return "Leading the team.";
     }
 
     public function conductWebinar() {
-        // Логика проведения вебинара
         return "Conducting a webinar.";
     }
 }
 
-// Класс Менеджер
+// РљР»Р°СЃСЃ РњРµРЅРµРґР¶РµСЂ
 class Manager extends Employee implements LeadInterface {
     public function leadTeam() {
-        // Логика руководства
         return "Leading the team.";
     }
 }
 
-// Класс Программист
+// РљР»Р°СЃСЃ РџСЂРѕРіСЂР°РјРјРёСЃС‚
 class Programmer extends Employee implements ApplicationCreatorInterface {
     public function createApplication() {
-        // Логика создания приложения
         return "Creating an application.";
     }
 }
 
-// Класс Тестировщик
+// РљР»Р°СЃСЃ РўРµСЃС‚РёСЂРѕРІС‰РёРє
 class Tester extends Employee {
     public function testApplication() {
-        // Логика тестирования приложения
         return "Testing the application.";
     }
 }
 
-// Пример использования классов
+// РџСЂРёРјРµСЂ РёСЃРїРѕР»СЊР·РѕРІР°РЅРёСЏ РєР»Р°СЃСЃРѕРІ
 $director = new Director('John', 'Doe', 5000);
 $manager = new Manager('Jane', 'Smith', 4000);
 $programmer = new Programmer('Bob', 'Johnson', 4500);
 $tester = new Tester('Alice', 'Williams', 3500);
 
-// Вывод информации о каждом сотруднике
+// Р’С‹РІРѕРґ РёРЅС„РѕСЂРјР°С†РёРё Рѕ РєР°Р¶РґРѕРј СЃРѕС‚СЂСѓРґРЅРёРєРµ
 echo $director->getFullName() . ": " . $director->leadTeam() . " " . $director->conductWebinar() . " Salary: " . $director->getSalary() . PHP_EOL;
 echo $manager->getFullName() . ": " . $manager->leadTeam() . " Salary: " . $manager->getSalary() . PHP_EOL;
 echo $programmer->getFullName() . ": " . $programmer->createApplication() . " Salary: " . $programmer->getSalary() . PHP_EOL;
 echo $tester->getFullName() . ": " . $tester->testApplication() . " Salary: " . $tester->getSalary() . PHP_EOL;
 
-// Вывод общего количества сотрудников и общей зарплаты на отдел
+// Р’С‹РІРѕРґ РѕР±С‰РµРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ Рё РѕР±С‰РµР№ Р·Р°СЂРїР»Р°С‚С‹ РЅР° РѕС‚РґРµР»
 $totalEmployees = [$director, $manager, $programmer, $tester];
 $totalSalary = 0;
 
